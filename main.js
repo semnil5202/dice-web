@@ -8,21 +8,20 @@ let mode = 6;
 
 diceModeSixBtn.addEventListener('click', () => {
   mode = 6;
-  diceImg.src = './juinit.png';
+  diceImg.src = './Juinit.png';
   result.innerHTML = '최대값이 6으로 설정되었습니다.';
 });
 
 diceModeTwelveBtn.addEventListener('click', () => {
   mode = 12;
-  diceImg.src = './juinit.png';
+  diceImg.src = './Juinit.png';
   result.innerHTML = '최대값이 12으로 설정되었습니다.';
 });
 
 startingGame.addEventListener('click', () => {
   const diceNumber = Math.floor(Math.random() * mode + 1);
-  const animNumber = Math.floor(Math.random() * mode + 1);
 
-  diceImg.src = `./juinit.png`;
+  diceImg.src = `./Juinit.png`;
   result.innerHTML = '';
 
   const timerId = setTimeout(() => {
