@@ -5,6 +5,8 @@ const diceImg = document.querySelector('img');
 const result = document.querySelector('h2');
 
 let mode = 6;
+const syncs =
+  JSON.parse(localStorage.getItem('textDelay')) || new Array(12).fill(false);
 
 diceModeSixBtn.addEventListener('click', () => {
   mode = 6;
@@ -20,6 +22,7 @@ diceModeTwelveBtn.addEventListener('click', () => {
 
 startingGame.addEventListener('click', () => {
   const diceNumber = Math.floor(Math.random() * mode + 1);
+  let textDelay = 750;
 
   diceImg.src = `./diceInit.svg`;
   result.innerHTML = '';
@@ -29,8 +32,14 @@ startingGame.addEventListener('click', () => {
     clearTimeout(diceTimerId);
   }, 500);
 
+  if (syncs[diceNumber - 1]) textDelay = 500;
+
   const resultTimerId = setTimeout(() => {
     result.innerHTML = diceNumber;
     clearTimeout(resultTimerId);
-  }, 750);
+  }, textDelay);
+
+  syncs[diceNumber - 1] = true;
+
+  localStorage.setItem('textDelay', JSON.stringify(syncs));
 });
