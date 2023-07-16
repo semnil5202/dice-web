@@ -4,7 +4,7 @@ const startingGameBtn = document.querySelector('button.starting-game');
 const diceImg = document.querySelector('img');
 const result = document.querySelector('h2');
 
-const isKakao = navigator.userAgent.match('KAKAO');
+const isKakao = Boolean(navigator.userAgent.match('KAKAO'));
 
 let mode = 6;
 const syncs =
