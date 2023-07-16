@@ -24,9 +24,13 @@ startingGame.addEventListener('click', () => {
   diceImg.src = `./diceInit.svg`;
   result.innerHTML = '';
 
-  const timerId = setTimeout(() => {
+  const diceTimerId = setTimeout(() => {
     diceImg.src = `./dice${diceNumber}.svg`;
-    result.innerHTML = diceNumber;
-    clearTimeout(timerId);
+    clearTimeout(diceTimerId);
   }, 500);
+
+  const resultTimerId = setTimeout(() => {
+    result.innerHTML = diceNumber;
+    clearTimeout(resultTimerId);
+  }, 750);
 });
