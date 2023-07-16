@@ -5,6 +5,7 @@ const diceImg = document.querySelector('img');
 const result = document.querySelector('h2');
 
 let mode = 6;
+let isThrow = false;
 
 diceModeSixBtn.addEventListener('click', () => {
   mode = 6;
@@ -23,12 +24,16 @@ diceModeTwelveBtn.addEventListener('click', () => {
 });
 
 startingGameBtn.addEventListener('click', () => {
+  if (isThrow) return;
+
+  isThrow = true;
   const diceNumber = Math.floor(Math.random() * mode + 1);
 
   diceImg.src = `./diceInit.svg`;
 
   const diceTimerId = setTimeout(() => {
     diceImg.src = `./dice${diceNumber}.svg`;
+    isThrow = false;
     clearTimeout(diceTimerId);
   }, 500);
 });
