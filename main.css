@@ -6,16 +6,24 @@ body {
   align-items: center;
 }
 
+.active {
+  background-color: #e34040;
+  color: #ffffff;
+}
+
 button {
-  width: 100px;
+  width: 140px;
   height: 48px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   margin: 112px 12px;
+  border-radius: 4px;
 }
 
 button.starting-game {
   margin-bottom: 0;
+  background-color: #7fffd4;
+  font-size: 20px;
 }
 
 h2 {
@@ -23,6 +31,7 @@ h2 {
   height: 26px;
 }
 
-button.starting-game {
-  background-color: aquamarine;
+button.starting-game:active {
+  box-shadow: inset 0 0 8px #1f3e33;
+  cursor: pointer;
 }
