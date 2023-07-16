@@ -1,12 +1,15 @@
 const diceModeSixBtn = document.querySelector('button.mode-six');
 const diceModeTwelveBtn = document.querySelector('button.mode-twelve');
-const startingGame = document.querySelector('button.starting-game');
+const startingGameBtn = document.querySelector('button.starting-game');
 const diceImg = document.querySelector('img');
 const result = document.querySelector('h2');
 
+const isKakao = navigator.userAgent.match('KAKAO');
+
 let mode = 6;
 const syncs =
-  JSON.parse(localStorage.getItem('textDelay')) || new Array(12).fill(false);
+  (!isKakao && JSON.parse(localStorage.getItem('textDelay'))) ||
+  new Array(12).fill(false);
 
 diceModeSixBtn.addEventListener('click', () => {
   mode = 6;
@@ -20,7 +23,7 @@ diceModeTwelveBtn.addEventListener('click', () => {
   result.innerHTML = '최대값이 12으로 설정되었습니다.';
 });
 
-startingGame.addEventListener('click', () => {
+startingGameBtn.addEventListener('click', () => {
   const diceNumber = Math.floor(Math.random() * mode + 1);
   let textDelay = 750;
 
@@ -41,5 +44,5 @@ startingGame.addEventListener('click', () => {
 
   syncs[diceNumber - 1] = true;
 
-  localStorage.setItem('textDelay', JSON.stringify(syncs));
+  !isKakao && localStorage.setItem('textDelay', JSON.stringify(syncs));
 });
